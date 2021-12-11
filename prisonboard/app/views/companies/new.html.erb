@@ -1,0 +1,32 @@
+<h1>New Article</h1>
+
+<%= form_with model: @company do |form| %>
+  <div>
+    <%= form.label :full_name %><br>
+    <%= form.text_field :full_name %>
+    <% @company.errors.full_messages_for(:full_name).each do |message| %>
+        <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :short_name %><br>
+    <%= form.text_area :short_name %>
+    <% @company.errors.full_messages_for(:short_name).each do |message| %>
+        <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :address %><br>
+    <%= form.text_area :address %>
+    <% @company.errors.full_messages_for(:address).each do |message| %>
+        <div><%= message %></div>
+    <% end %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
