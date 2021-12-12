@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_165949) do
+ActiveRecord::Schema.define(version: 2021_12_12_174807) do
 
   create_table "companies", force: :cascade do |t|
     t.string "address"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 2021_12_12_165949) do
     t.index ["company_id"], name: "index_job_offers_on_company_id"
   end
 
+  create_table "qualifications", force: :cascade do |t|
+    t.string "skill"
+    t.integer "level"
+    t.integer "inmate_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["inmate_id"], name: "index_qualifications_on_inmate_id"
+  end
+
   create_table "system_users", force: :cascade do |t|
     t.string "username"
     t.string "password"
@@ -49,4 +58,5 @@ ActiveRecord::Schema.define(version: 2021_12_12_165949) do
   end
 
   add_foreign_key "job_offers", "companies"
+  add_foreign_key "qualifications", "inmates"
 end

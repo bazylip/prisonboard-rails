@@ -1,0 +1,13 @@
+<%= form_with model: [ @inmate, @inmate.qualifications.build ] do |form| %>
+    <p>
+        <%= form.label :skill %><br>
+        <%= form.text_field :skill %>
+    </p>
+    <p>
+        <%= form.label :level %><br>
+        <%= form.number_field :level %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
