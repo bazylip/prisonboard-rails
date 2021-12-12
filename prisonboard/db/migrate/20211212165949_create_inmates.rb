@@ -8,6 +8,8 @@ class CreateInmates < ActiveRecord::Migration[6.1]
       t.boolean :hired
       t.date :birth_date
 
+      t.references :employment, foreign_key: true
+
       t.timestamps
     end
   end
