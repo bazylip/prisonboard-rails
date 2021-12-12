@@ -1,0 +1,7 @@
+<p>
+    <strong>Skill:</strong> <%= qualification.skill %>
+    <strong>Level:</strong> <%= qualification.level %>
+    <%= link_to 'Delete Skill', [qualification.inmate, qualification],
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+</p>
