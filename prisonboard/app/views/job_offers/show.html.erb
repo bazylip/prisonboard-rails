@@ -11,7 +11,11 @@
   data: { confirm: "Are you sure?" } %></li>
 </ul>
 
-<h2>Add Employment:</h2>
-<%= render 'employments/form' %>
+<% if @job_offer.employment %>
+  <p>Employed inmate: <%= link_to "#{Inmate.find(@job_offer.employment.id).name} #{Inmate.find(@job_offer.employment.id).surname}", inmate_path(Inmate.find(@job_offer.employment.id)) %> </p>
+<% else %>
+  <h2>Add Employment:</h2>
+  <%= render 'employments/form' %>
+<% end %>
 
 <%= link_to "Job Offers List", job_offers_path %>
