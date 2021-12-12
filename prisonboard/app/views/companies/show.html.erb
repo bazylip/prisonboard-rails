@@ -9,4 +9,41 @@
   data: { confirm: "Are you sure?" } %></li>
 </ul>
 
+<h2>Job Offers</h2>
+<% @company.job_offers.each do |job_offer| %>
+  <p>
+    <strong>Title:</strong>
+    <%= job_offer.job_title %>
+  </p>
+
+  <p>
+    <strong>Hourly rate:</strong>
+    <%= job_offer.hourly_rate %>
+  </p>
+
+  <p>
+    <strong>Weekly hours:</strong>
+    <%= job_offer.weekly_hours %>
+  </p>
+<% end %>
+
+<h2>Add Job Offer:</h2>
+<%= form_with model: [ @company, @company.job_offers.build ] do |form| %>
+  <p>
+    <%= form.label :job_title %><br>
+    <%= form.text_field :job_title %>
+  </p>
+  <p>
+    <%= form.label :hourly_rate %><br>
+    <%= form.number_field :hourly_rate %>
+  </p>
+  <p>
+    <%= form.label :weekly_hours %><br>
+    <%= form.number_field :weekly_hours %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
 <%= link_to "Companies List", companies_path %>
