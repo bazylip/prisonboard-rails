@@ -1,5 +1,17 @@
 <h1>Inmates</h1>
 
+<p>
+  <%= link_to "All Inmates", inmates_path %>
+</p>
+
+<%= form_tag "/inmates", method: "GET" do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name, params[:name] %>
+  <%= label_tag :surname %>
+  <%= text_field_tag :surname, params[:surname] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <ul>
   <% @inmates.each do |inmate| %>
     <li>
