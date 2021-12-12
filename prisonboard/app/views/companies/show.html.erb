@@ -2,4 +2,11 @@
 
 <p><%= @company.address %></p>
 
+<ul>
+  <li><%= link_to "Edit", edit_company_path(@company) %></li>
+  <li><%= link_to "Delete", company_path(@company),
+  method: :delete,
+  data: { confirm: "Are you sure?" } %></li>
+</ul>
+
 <%= link_to "Companies List", companies_path %>
