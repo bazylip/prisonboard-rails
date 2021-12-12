@@ -1,20 +1,4 @@
 <p>
     <strong>Title:</strong>
-    <%= job_offer.job_title %>
-</p>
-
-<p>
-    <strong>Hourly rate:</strong>
-    <%= job_offer.hourly_rate %>
-</p>
-
-<p>
-    <strong>Weekly hours:</strong>
-    <%= job_offer.weekly_hours %>
-</p>
-
-<p>
-  <%= link_to 'Delete Offer', [job_offer.company, job_offer],
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
+    <%= link_to job_offer.job_title, job_offer %>
 </p>
