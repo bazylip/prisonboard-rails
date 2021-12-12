@@ -20,6 +20,8 @@ class EmploymentsController < ApplicationController
       # @employment.inmate.add(Inmate.find(employment_params[:inmate_id]))
       @job_offer.employment = @employment
       @inmate.employment = @employment
+      @job_offer.save!
+      @inmate.save!
       @employment.save!
       redirect_to job_offer_path(@job_offer)
   end
