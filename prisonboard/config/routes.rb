@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :inmates do
     resources :qualifications
   end
+  resources :job_offers
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
