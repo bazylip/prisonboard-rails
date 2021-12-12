@@ -12,3 +12,9 @@
     <strong>Weekly hours:</strong>
     <%= job_offer.weekly_hours %>
 </p>
+
+<p>
+  <%= link_to 'Delete Offer', [job_offer.company, job_offer],
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+</p>

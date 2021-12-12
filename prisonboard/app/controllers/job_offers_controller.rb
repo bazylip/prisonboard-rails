@@ -5,6 +5,13 @@ class JobOffersController < ApplicationController
         @job_offer = @company.job_offers.create(job_offer_params)
         redirect_to company_path(@company)
     end
+    
+    def destroy
+        @company = Company.find(params[:company_id])
+        @job_offer = @company.job_offers.find(params[:id])
+        @job_offer.destroy
+        redirect_to company_path(@company)
+    end
 
     private
         def job_offer_params
