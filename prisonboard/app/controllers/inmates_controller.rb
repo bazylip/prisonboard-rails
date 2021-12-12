@@ -3,6 +3,17 @@ class InmatesController < ApplicationController
 
   def index
     @inmates = Inmate.all
+
+    if params[:name] && params[:name] != ""
+      @inmates = @inmates.where("name like ?", 
+      "%#{params[:name]}%")
+    end
+
+    if params[:surname] && params[:surname] != ""
+      @inmates = @inmates.where("surname like ?", 
+      "%#{params[:surname]}%")
+    end
+
   end
 
   def show
