@@ -1,4 +1,5 @@
 class JobOffersController < ApplicationController
+    http_basic_authenticate_with name: "admin", password: "admin"
 
     def create
         @company = Company.find(params[:company_id])

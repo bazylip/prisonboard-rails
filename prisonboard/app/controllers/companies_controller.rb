@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  http_basic_authenticate_with name: "dhh", password: "secret"
+
   def index
     @companies = Company.all
   end
