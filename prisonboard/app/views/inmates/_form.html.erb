@@ -1,0 +1,54 @@
+<%= form_with model: inmate do |form| %>
+    <div>
+        <%= form.label :name %><br>
+        <%= form.text_field :name %>
+        <% inmate.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :surname %><br>
+        <%= form.text_field :surname %>
+        <% inmate.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+    </div>
+
+    <div>
+        <%= form.label :pesel %><br>
+        <%= form.text_field :pesel %>
+        <% inmate.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :average_rating %><br>
+        <%= form.number_field :average_rating %>
+        <% inmate.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :hired %><br>
+        <%= form.check_box :hired %>
+        <% inmate.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :birth_date %><br>
+        <%= form.date_field :birth_date %>
+        <% inmate.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+    
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

@@ -1,0 +1,15 @@
+<h1><%= "#{@inmate.name} #{@inmate.surname}" %></h1>
+
+<p>PESEL: <%= @inmate.pesel %></p>
+<p>Birth date: <%= @inmate.birth_date %></p>
+<p>Average rating: <%= @inmate.average_rating %></p>
+<p>Hired? <%= @inmate.hired %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_inmate_path(@inmate) %></li>
+  <li><%= link_to "Delete", inmate_path(@inmate),
+  method: :delete,
+  data: { confirm: "Are you sure?" } %></li>
+</ul>
+
+<%= link_to "Inmates List", inmates_path %>

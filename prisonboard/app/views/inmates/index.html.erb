@@ -1,0 +1,16 @@
+<h1>Inmates</h1>
+
+<ul>
+  <% @inmates.each do |inmate| %>
+    <li>
+      <%= link_to "#{inmate.name} #{inmate.surname}" , inmate %>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to "New Inmate", new_inmate_path %>
+</p>
+<p>
+  <%= link_to "Home", root_path %>
+</p>
