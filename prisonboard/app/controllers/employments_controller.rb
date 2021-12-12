@@ -11,13 +11,8 @@ class EmploymentsController < ApplicationController
 
   def create
       @job_offer = JobOffer.find(params[:job_offer_id])
-      # @job_offer.create_employment(params.except[:inmate_id])
       @inmate = Inmate.find(params[:employment][:inmate_id])
-      # @inmate.create_employment(params.except[:inmate_id])
-      # redirect_to job_offer_path(@job_offer)
       @employment = Employment.new(employment_params.merge(:job_offer_id=> params[:job_offer_id]))
-      # @employment.job_offer.add(JobOffer.find(params[:job_offer_id]))
-      # @employment.inmate.add(Inmate.find(employment_params[:inmate_id]))
       @job_offer.employment = @employment
       @inmate.employment = @employment
       @job_offer.save!
@@ -27,13 +22,15 @@ class EmploymentsController < ApplicationController
   end
   
   def destroy
-      @job_offer = JobOffer.find(params[:job_offer_id])
-      @inmate = Inmate.find(employment_params[:inmate_id])
-      @employment = @job_offer.job_offers.find(params[:id])
+        @employment = Employment.find(params[:job_offer_id])
+        @job_offer = JobOffer.find(@employment.job_offer_id)
+        @inmate = Inmate.find(@employment.inmate_id)
+        @job_offer.employment = nil
+        @inmate.employment = nil
+        @job_offer.save!
+        @inmate.save!
       @employment.destroy
-      @employment = @inmate.job_offers.find(params[:id])
-      @employment.destroy
-      redirect_to job_offers_path
+      redirect_to job_offer_path(@job_offer)
   end
 
   private

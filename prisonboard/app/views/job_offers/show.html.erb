@@ -12,7 +12,10 @@
 </ul>
 
 <% if @job_offer.employment %>
-  <p>Employed inmate: <%= link_to "#{Inmate.find(@job_offer.employment.id).name} #{Inmate.find(@job_offer.employment.id).surname}", inmate_path(Inmate.find(@job_offer.employment.id)) %> </p>
+  <p>Employed inmate: <%= link_to "#{Inmate.find(@job_offer.employment.inmate_id).name} #{Inmate.find(@job_offer.employment.inmate_id).surname}", inmate_path(Inmate.find(@job_offer.employment.inmate_id)) %> </p>
+  <p><%= link_to "Fire him! 😎", job_offer_employment_path(@job_offer.employment),
+  method: :delete,
+  data: { confirm: "Are you sure?" } %> </p>
 <% else %>
   <h2>Add Employment:</h2>
   <%= render 'employments/form' %>
