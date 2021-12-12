@@ -1,0 +1,13 @@
+<%= form_with model: [ @job_offer, @job_offer.create_employment ] do |form| %>
+    <p>
+        <%= form.label :start_date %><br>
+        <%= form.date_field :start_date %>
+    </p>
+    <p>
+        <%= form.label :inmate_id %><br>
+        <%= form.number_field :inmate_id %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>

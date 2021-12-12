@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(version: 2021_12_12_204140) do
     t.float "average_rating"
     t.boolean "hired"
     t.date "birth_date"
+    t.integer "employment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["employment_id"], name: "index_inmates_on_employment_id"
   end
 
   create_table "job_offers", force: :cascade do |t|
@@ -47,9 +49,11 @@ ActiveRecord::Schema.define(version: 2021_12_12_204140) do
     t.float "hourly_rate"
     t.integer "weekly_hours"
     t.integer "company_id", null: false
+    t.integer "employment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_job_offers_on_company_id"
+    t.index ["employment_id"], name: "index_job_offers_on_employment_id"
   end
 
   create_table "qualifications", force: :cascade do |t|
@@ -61,15 +65,10 @@ ActiveRecord::Schema.define(version: 2021_12_12_204140) do
     t.index ["inmate_id"], name: "index_qualifications_on_inmate_id"
   end
 
-  create_table "system_users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "employments", "inmates"
   add_foreign_key "employments", "job_offers"
+  add_foreign_key "inmates", "employments"
   add_foreign_key "job_offers", "companies"
+  add_foreign_key "job_offers", "employments"
   add_foreign_key "qualifications", "inmates"
 end
