@@ -1,0 +1,14 @@
+<h1><%= @job_offer.job_title %></h1>
+
+<p>Hourly rate: <%= @job_offer.hourly_rate %></p>
+<p>Weekly hours: <%= @job_offer.weekly_hours %></p>
+<p>Company: <%=@job_offer.company.full_name %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_job_offer_path(@job_offer) %></li>
+  <li><%= link_to "Delete", job_offer_path(@job_offer),
+  method: :delete,
+  data: { confirm: "Are you sure?" } %></li>
+</ul>
+
+<%= link_to "Job Offers List", job_offers_path %>
