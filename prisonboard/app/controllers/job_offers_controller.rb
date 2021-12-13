@@ -3,6 +3,17 @@ class JobOffersController < ApplicationController
 
     def index
         @job_offers = JobOffer.all
+
+        if params[:job_title] && params[:job_title] != ""
+            @job_offers = @job_offers.where("job_title like ?", 
+            "%#{params[:job_title]}%")
+        end
+    
+
+        if params[:company] && params[:company] != ""
+            @job_offers = JobOffer.joins(:company).where("companies.full_name like ?", 
+            "%#{params[:company]}%")
+        end
     end
 
     def show

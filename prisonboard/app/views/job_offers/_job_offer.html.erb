@@ -1,7 +1,8 @@
 <p>
     <strong>Title:</strong>
+    <%= link_to job_offer.job_title, job_offer %>, <%= link_to job_offer.company.full_name, job_offer.company %>
+
     <% if !job_offer.employment %>
     <b>FREE</b>
     <% end %>
-    <%= link_to job_offer.job_title, job_offer %>, <%= link_to job_offer.company.full_name, job_offer.company %>
 </p>

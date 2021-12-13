@@ -12,13 +12,17 @@ class EmploymentsController < ApplicationController
   def create
       @job_offer = JobOffer.find(params[:job_offer_id])
       @inmate = Inmate.find(params[:employment][:inmate_id])
-      @employment = Employment.new(employment_params.merge(:job_offer_id=> params[:job_offer_id]))
-      @job_offer.employment = @employment
-      @inmate.employment = @employment
-      @job_offer.save!
-      @inmate.save!
-      @employment.save!
-      redirect_to job_offer_path(@job_offer)
+      if @job_offer.employment.nil? && @inmate.employment.nil?
+        @employment = Employment.new(employment_params.merge(:job_offer_id=> params[:job_offer_id]))
+        @job_offer.employment = @employment
+        @inmate.employment = @employment
+        @job_offer.save!
+        @inmate.save!
+        @employment.save!
+        redirect_to job_offer_path(@job_offer)
+      else
+        redirect_to job_offer_path(@job_offer)
+      end
   end
   
   def destroy
