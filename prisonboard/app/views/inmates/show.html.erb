@@ -9,8 +9,12 @@
 
 <p>PESEL: <%= @inmate.pesel %></p>
 <p>Birth date: <%= @inmate.birth_date %></p>
-<p>Average rating: <%= @inmate.average_rating %></p>
-<p>Hired? <%= @inmate.hired %></p>
+
+<% if @inmate.employment %>
+  <p>Employed as <%= link_to "#{JobOffer.find(@inmate.employment.job_offer_id).job_title}", job_offer_path(JobOffer.find(@inmate.employment.job_offer_id)) %></p>
+<% else %>
+  <p>Unemployed</p>
+<% end %>
 
 <h2>Qualifications</h2>
 <%= render @inmate.qualifications %>
@@ -18,4 +22,10 @@
 <h2>Add Qualification:</h2>
 <%= render 'qualifications/form' %>
 
+<p>
 <%= link_to "Inmates List", inmates_path %>
+</p>
+
+<p>
+  <%= link_to "Home", root_path %>
+</p>

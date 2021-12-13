@@ -1,12 +1,6 @@
 <h1>Job Offers</h1>
 
-<ul>
-  <% @job_offers.each do |job_offer| %>
-    <li>
-      <%= link_to job_offer.job_title, job_offer %>, <%= link_to job_offer.company.full_name, job_offer.company %>
-    </li>
-  <% end %>
-</ul>
+<%= render @job_offers %>
 
 <p>
   <%= link_to "Home", root_path %>
